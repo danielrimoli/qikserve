@@ -7,7 +7,6 @@ import com.qikserve.checkout.layout.ProductsLayout;
 import com.qikserve.checkout.layout.TotalsLayout;
 import com.qikserve.checkout.pojo.Product;
 import com.vaadin.flow.component.dependency.CssImport;
-import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.Route;
@@ -43,10 +42,8 @@ public class MainView extends VerticalLayout {
 
         basket.setLayouts(basketContents, totals);
 
-        HorizontalLayout columns = new HorizontalLayout(
-                new VerticalLayout(new H1("Available Products"), productsLayout),
-                new VerticalLayout(new H1("BasketContents"), basketContents),
-                new VerticalLayout(new H1("Expected Totals"), totals));
+        HorizontalLayout columns = new HorizontalLayout(new VerticalLayout(productsLayout),
+                new VerticalLayout(basketContents), new VerticalLayout(totals));
         columns.setWidthFull();
 
         add(columns);

@@ -6,6 +6,10 @@ public class PromotionGetFree extends Promotion {
         super(promo.getRequired_qty(), promo.getFree_qty());
     }
 
+    public PromotionGetFree(int requiredQuantity, int value) {
+        super(requiredQuantity, value);
+    }
+
     @Override
     // This requires the purchase of products in "bundles" of "required" quantity,
     // to get a part of them for free

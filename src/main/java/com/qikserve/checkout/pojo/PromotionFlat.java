@@ -6,6 +6,10 @@ public class PromotionFlat extends Promotion {
         super(promo.getRequired_qty(), promo.getAmount());
     }
 
+    public PromotionFlat(int requiredQuantity, int value) {
+        super(requiredQuantity, value);
+    }
+
     @Override
     // This has no minimum requirement. We just apply the flat rate for all
     // products.

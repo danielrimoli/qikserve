@@ -12,6 +12,13 @@ public class Product {
     public Product() {
     }
 
+    public Product(String name, int price, Promotion promo, String id) {
+        this.name = name;
+        this.price = price;
+        this.promo = promo;
+        this.id = id;
+    }
+
     public int getPrice() {
         return this.price;
     }

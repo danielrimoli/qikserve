@@ -6,6 +6,10 @@ public class PromotionOverride extends Promotion {
         super(promo.getRequired_qty(), promo.getPrice());
     }
 
+    public PromotionOverride(int requiredQuantity, int value) {
+        super(requiredQuantity, value);
+    }
+
     @Override
     // This promotion requires the purchase of products in "bundles" of "required"
     // quantity, to get a discount.

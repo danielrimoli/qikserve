@@ -14,7 +14,7 @@ public class Basket {
         this.service = service;
     }
 
-    Map<Product, Integer> contents = new HashMap<Product, Integer>();
+    protected Map<Product, Integer> contents = new HashMap<Product, Integer>();
     BasketLayout layout;
     TotalsLayout totals;
 
@@ -66,5 +66,9 @@ public class Basket {
     public void setLayouts(BasketLayout basketContents, TotalsLayout totals) {
         this.layout = basketContents;
         this.totals = totals;
+    }
+
+    public int getCount() {
+        return contents.keySet().size();
     }
 }
