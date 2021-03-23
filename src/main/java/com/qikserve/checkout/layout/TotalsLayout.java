@@ -21,7 +21,7 @@ public class TotalsLayout extends VerticalLayout {
     }
 
     public void displayTotals(int total, int savings, int payable) {
-        values.removeAll();
+        clear();
         values.addAndExpand(new PriceLabel(total), new PriceLabel(savings), new PriceLabel(payable));
     }
 

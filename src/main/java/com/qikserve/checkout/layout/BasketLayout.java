@@ -25,13 +25,19 @@ public class BasketLayout extends VerticalLayout {
         checkoutButton = new Button("Checkout", e -> basket.checkout());
     }
 
+    // We want to re-use the layout elements to make it simpler to maintain visual
+    // order of products in the UI
     public void add(Product prod, int qty) {
+        // If basket is empty, we assume the "empty" label is still visible and remove
+        // it
         if (contents.size() == 0) {
             remove(emptyLabel);
         }
 
         HorizontalLayout layout = contents.get(prod.getId());
 
+        // If a layout element for this product doesn't exist already, create one and
+        // store it in the map
         if (layout == null) {
             layout = new HorizontalLayout();
             contents.put(prod.getId(), layout);
@@ -41,6 +47,7 @@ public class BasketLayout extends VerticalLayout {
             setHorizontalComponentAlignment(Alignment.CENTER, checkoutButton);
         }
 
+        // Clear out contents and add new label with current quantity;
         layout.removeAll();
         layout.add(new Label(Integer.toString(qty) + "x " + prod.getName()));
     }

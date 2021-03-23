@@ -2,12 +2,19 @@ package com.qikserve.checkout.pojo;
 
 import java.util.List;
 
+// To be able to automatically convert the JSON object to Java using RestTemplate, the Java object must have fields
+// with the exact same name as the JSON objects
 public class Product {
     String name;
     int price;
-    Promotion promo;
     String id;
+    // We use this list to hold the promotions retrieved in JSON format, before
+    // converting them to the more functional Promotion class
     List<JSONPromo> promotions;
+
+    // This field is used to hold the more functional Promotion object, after being
+    // converted from the JSON format stored in JSONPromo list
+    Promotion promo;
 
     public Product() {
     }
@@ -58,17 +65,26 @@ public class Product {
         this.promotions = promotions;
     }
 
+    // Convert the JSONPromo object retrieved with the REST API, which is not very
+    // functional, to the internal Promotion class, with proper hierarchy and
+    // standard interface
     public void processPromotions() {
         if ((this.promotions != null) && (this.promotions.size() > 0)) {
             promo = Promotion.getPromotionFromJSON(this.promotions.get(0));
         }
     }
 
+    // Override equals method to allow hashmap lookup when using different instances
+    // of the same product, which should still be treated as equal by the
+    // application
     @Override
     public boolean equals(Object prod) {
         return this.id.equals(((Product) prod).getId());
     }
 
+    // Override hashCode method to allow hashmap lookup when using different
+    // instances of the same product, which should still be treated as
+    // equal by the application
     @Override
     public int hashCode() {
         return this.id.hashCode();

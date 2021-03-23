@@ -2,6 +2,11 @@ package com.qikserve.checkout.pojo;
 
 public abstract class Promotion {
 
+    // This was the least ugly way possible to transform the JSON promotion objects,
+    // which had no common properties or interfaces to much more manageable Java
+    // classes with proper hierarchy and common interfaces.
+    // This also allows for much easier extension of the supported promotion types
+    // in the future
     public static final Promotion getPromotionFromJSON(JSONPromo promo) {
         if (promo != null) {
             switch (promo.getType()) {
@@ -23,5 +28,11 @@ public abstract class Promotion {
         this.value = value;
     }
 
+    // This method should be used to calculate the total money saved by the user,
+    // according to the mechanics of the specific promotion in question, the total
+    // quantity of the same product that was added to the basket and the unit price
+    // of the product
+    // Return should be the actual savings, in absolute value, represented in
+    // pennies.
     public abstract int getSavings(int quantity, int price);
 }
