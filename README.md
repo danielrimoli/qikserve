@@ -16,19 +16,10 @@ the Checkout web-app.
 
 ### Running Integration Tests
 
-Integration tests are implemented using [Vaadin TestBench](https://vaadin.com/testbench). The tests take a few minutes to run and are therefore included in a separate Maven profile. We recommend running tests with a production build to minimize the chance of development time toolchains affecting test stability. To run the tests using Google Chrome, execute
+Integration tests are implemented using JUnit and Mockito
+To run the tests, execute
 
-`mvn verify -Pit,production`
-
-and make sure you have a valid TestBench license installed.
-
-Profile `it` adds the following parameters to run integration tests:
-```sh
--Dwebdriver.chrome.driver=path_to_driver
--Dcom.vaadin.testbench.Parameters.runLocally=chrome
-```
-
-If you would like to run a separate test make sure you have added these parameters to VM Options of JUnit run configuration
+`mvn test -Put`
 
 ## Project overview
 
@@ -36,7 +27,7 @@ Project follow the Maven's [standard directory layout structure](https://maven.a
 - Under the `src/main/java` are located Application sources
    - `Application.java` is a runnable Java application class and a starting point
    - `MainView.java` is a default view and entry point of the application
-- Under the `srs/test` are located test files
+- Under the `src/test` are located test files
 - `src/main/resources` contains configuration files and static resources
 - The `frontend` directory in the root folder contains client-side dependencies and resource files
    - All CSS styles used by the application are located under the root directory `frontend/styles`    
